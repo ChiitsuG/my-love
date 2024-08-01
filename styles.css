@@ -1,0 +1,164 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom, #d3d3d3, #a9a9a9); /* Change background to grey gradient */
+    color: #fff; /* Change text color to white */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    overflow: hidden; /* Ensure snowflakes don't cause scrollbars */
+}
+
+#flipbook {
+    width: 80vw;
+    height: 80vh;
+    perspective: 1000px;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add box shadow */
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #000; /* Change container background color to black */
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.text {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color: #fff; /* Change text color to white */
+    text-align: center;
+}
+
+.image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.page:nth-child(odd) {
+    transform-origin: right;
+}
+
+.page:nth-child(even) {
+    transform-origin: left;
+}
+
+.cover {
+    background-color: #ffcccb;
+    cursor: pointer;
+}
+
+.back-cover {
+    background-color: #ffcccb;
+}
+
+@keyframes snow {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: snow linear infinite;
+}
+
+.snowflake:nth-child(odd) {
+    width: 10px;
+    height: 10px;
+    left: 20%;
+    animation-duration: 8s;
+}
+
+.snowflake:nth-child(even) {
+    width: 15px;
+    height: 15px;
+    left: 80%;
+    animation-duration: 12s;
+}
+
+/* Additional snowflakes for snowstorm effect */
+.snowflake:nth-child(3n) {
+    width: 8px;
+    height: 8px;
+    left: 50%;
+    animation-duration: 6s;
+}
+
+.snowflake:nth-child(4n) {
+    width: 12px;
+    height: 12px;
+    left: 30%;
+    animation-duration: 10s;
+}
+
+.snowflake:nth-child(5n) {
+    width: 20px;
+    height: 20px;
+    left: 70%;
+    animation-duration: 14s;
+}
+
+.snowflake:nth-child(6n) {
+    width: 5px;
+    height: 5px;
+    left: 40%;
+    animation-duration: 7s;
+}
+
+.snowflake:nth-child(7n) {
+    width: 18px;
+    height: 18px;
+    left: 60%;
+    animation-duration: 11s;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+    #flipbook {
+        width: 90vw;
+        height: 90vh;
+    }
+
+    .text {
+        font-size: 1.5em;
+    }
+
+    .image img {
+        max-width: 90%;
+    }
+}
